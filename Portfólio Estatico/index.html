@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+  <!-- MAIN SITE -->
+  <div id="main-site">
+
+    <!-- NAV -->
+    <nav id="main-nav">
+      <div class="logo" id="nav-logo">Alexandre Costa</div>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <button class="nav-cta" onclick="goAdmin()">Admin</button>
+      <button class="menu-btn" onclick="toggleMenu()"><i class="fa fa-bars"></i></button>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-line"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow" id="hero-eyebrow">Desenvolvedor Full Stack</div>
+        <h1 class="hero-name">Olá, sou<br><span id="hero-name">Alexandre<br>Costa</span></h1>
+        <p class="hero-title"><span id="typed-text"></span><span id="typed-cursor">|</span></p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="scrollTo('#projetos')">Ver Projetos</button>
+          <button class="btn-secondary" onclick="scrollTo('#contato')">Fale Comigo</button>
+        </div>
+        <div class="hero-socials" id="hero-socials">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="sobre">
+      <div class="about-grid reveal">
+        <div class="about-img-wrap">
+          <div class="about-img-placeholder" id="about-img-el"><i class="fa fa-user"></i></div>
+          <div class="about-accent-box">
+            <div class="num" id="about-exp-num">5+</div>
+            <div class="lbl">Anos de<br>Experiência</div>
+          </div>
+        </div>
+        <div>
+          <p class="section-label">Sobre Mim</p>
+          <h2 class="section-title" id="about-title">Criando experiências digitais que inspiram</h2>
+          <div class="section-divider"></div>
+          <p class="about-text" id="about-text">Sou um desenvolvedor full stack apaixonado por criar soluções digitais
+            elegantes e eficientes. Com mais de 5 anos de experiência, trabalho com tecnologias modernas para
+            transformar ideias em produtos reais que encantam usuários e geram resultados.</p>
+          <div class="skills-list" id="skills-list">
+            <span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span
+              class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Next.js</span><span class="skill-tag">PostgreSQL</span><span
+              class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS</span><span class="skill-tag">Figma</span>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <button class="btn-primary" onclick="scrollTo('#contato')">Contrate-me</button>
+            <button class="btn-secondary" id="cv-btn">Baixar CV <i class="fa fa-download"
+                style="margin-left:.5rem"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projetos">
+      <p class="section-label reveal">Portfólio</p>
+      <h2 class="section-title reveal">Projetos Selecionados</h2>
+      <div class="section-divider reveal"></div>
+      <div class="projects-filter reveal" id="projects-filter">
+        <button class="filter-btn active" data-cat="todos">Todos</button>
+        <button class="filter-btn" data-cat="frontend">Frontend</button>
+        <button class="filter-btn" data-cat="backend">Backend</button>
+        <button class="filter-btn" data-cat="fullstack">Full Stack</button>
+        <button class="filter-btn" data-cat="mobile">Mobile</button>
+      </div>
+      <div class="projects-grid reveal" id="projects-grid"></div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicos">
+      <p class="section-label reveal">Serviços</p>
+      <h2 class="section-title reveal">O que posso fazer<br>por você</h2>
+      <div class="section-divider reveal"></div>
+      <div class="services-grid reveal" id="services-grid"></div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="depoimentos">
+      <p class="section-label reveal">Depoimentos</p>
+      <h2 class="section-title reveal">O que dizem<br>sobre mim</h2>
+      <div class="section-divider reveal"></div>
+      <div class="testimonials-wrap reveal">
+        <div class="testimonials-track" id="testimonials-track"></div>
+        <div class="testimonials-nav" id="testimonials-nav"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato">
+      <div class="contact-grid reveal">
+        <div>
+          <p class="section-label">Contato</p>
+          <h2 class="section-title">Vamos criar algo incrível juntos</h2>
+          <div class="section-divider"></div>
+          <div id="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fa fa-envelope"></i></div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-val" id="contact-email">alexandre@email.com</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fa fa-phone"></i></div>
+              <div>
+                <div class="contact-info-label">Telefone</div>
+                <div class="contact-info-val" id="contact-phone">+55 (11) 99999-9999</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fa fa-map-marker-alt"></i></div>
+              <div>
+                <div class="contact-info-label">Localização</div>
+                <div class="contact-info-val" id="contact-location">São Paulo, Brasil</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form" onsubmit="submitContact(event)">
+            <div class="admin-grid-2">
+              <div class="form-group"><label class="form-label">Nome</label><input class="form-input" name="nome"
+                  placeholder="Seu nome" required></div>
+              <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
+                  name="email" placeholder="seu@email.com" required></div>
+            </div>
+            <div class="form-group"><label class="form-label">Assunto</label><input class="form-input" name="assunto"
+                placeholder="Assunto da mensagem"></div>
+            <div class="form-group"><label class="form-label">Mensagem</label><textarea class="form-textarea"
+                name="mensagem" placeholder="Conte sobre seu projeto..." required></textarea></div>
+            <button class="form-submit" type="submit">Enviar Mensagem <i class="fa fa-paper-plane"
+                style="margin-left:.5rem"></i></button>
+            <div class="form-msg" id="contact-msg"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner"
+        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <p class="footer-copy">© <span id="footer-year"></span> <span id="footer-name">Alexandre Costa</span>. Todos os
+          direitos reservados.</p>
+        <div class="footer-socials" id="footer-socials">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /main-site -->
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal modal-wrap">
+      <button class="modal-close" onclick="closeModal()"><i class="fa fa-times"></i></button>
+      <div class="modal-img" id="modal-img"></div>
+      <div class="modal-body">
+        <p class="modal-cat" id="modal-cat"></p>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="project-techs" id="modal-techs"></div>
+        <div class="modal-links" style="margin-top:1.5rem" id="modal-links"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN PANEL -->
+  <div id="login-panel">
+    <div class="login-box">
+      <div class="login-logo">Admin</div>
+      <p class="login-sub">Painel Administrativo</p>
+      <div class="login-error" id="login-error">Credenciais inválidas</div>
+      <div class="admin-field"><label class="admin-label">Usuário</label><input class="admin-input" id="login-user"
+          placeholder="admin" autocomplete="username"></div>
+      <div class="admin-field"><label class="admin-label">Senha</label><input class="admin-input" type="password"
+          id="login-pass" placeholder="••••••" autocomplete="current-password"></div>
+      <button class="login-btn" onclick="doLogin()">Entrar</button>
+      <p style="text-align:center;margin-top:1rem;font-size:.78rem;color:var(--text3)">Use: admin / admin123</p>
+      <button onclick="goHome()"
+        style="width:100%;background:none;border:none;color:var(--text3);font-size:.8rem;cursor:pointer;margin-top:1rem">←
+        Voltar ao site</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-panel">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <span>Admin Panel</span>
+        <p>Portfólio CMS</p>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-item active" data-sec="dashboard" onclick="showAdminSection('dashboard',this)"><i
+            class="fa fa-home"></i> Dashboard</div>
+        <div class="admin-nav-item" data-sec="perfil" onclick="showAdminSection('perfil',this)"><i
+            class="fa fa-user"></i> Perfil</div>
+        <div class="admin-nav-item" data-sec="projetos" onclick="showAdminSection('projetos',this)"><i
+            class="fa fa-code"></i> Projetos</div>
+        <div class="admin-nav-item" data-sec="servicos" onclick="showAdminSection('servicos',this)"><i
+            class="fa fa-cog"></i> Serviços</div>
+        <div class="admin-nav-item" data-sec="depoimentos" onclick="showAdminSection('depoimentos',this)"><i
+            class="fa fa-quote-right"></i> Depoimentos</div>
+        <div class="admin-nav-item" data-sec="contato" onclick="showAdminSection('contato',this)"><i
+            class="fa fa-envelope"></i> Contato</div>
+        <div class="admin-nav-item" data-sec="mensagens" onclick="showAdminSection('mensagens',this)"><i
+            class="fa fa-inbox"></i> Mensagens</div>
+      </nav>
+      <div class="admin-logout"><button class="admin-logout-btn" onclick="doLogout()"><i class="fa fa-sign-out-alt"></i>
+          Sair</button></div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1 id="admin-section-title">Dashboard</h1>
+        <button class="admin-btn admin-btn-sm admin-btn-outline" onclick="goHome()"><i class="fa fa-eye"></i> Ver
+          Site</button>
+      </div>
+      <div class="admin-content">
+
+        <!-- DASHBOARD -->
+        <div class="admin-section active" id="sec-dashboard">
+          <div class="admin-stat-grid">
+            <div class="admin-stat">
+              <div class="admin-stat-num" id="stat-projetos">0</div>
+              <div class="admin-stat-lbl">Projetos</div>
+            </div>
+            <div class="admin-stat">
+              <div class="admin-stat-num" id="stat-servicos">0</div>
+              <div class="admin-stat-lbl">Serviços</div>
+            </div>
+            <div class="admin-stat">
+              <div class="admin-stat-num" id="stat-deps">0</div>
+              <div class="admin-stat-lbl">Depoimentos</div>
+            </div>
+            <div class="admin-stat">
+              <div class="admin-stat-num" id="stat-msgs">0</div>
+              <div class="admin-stat-lbl">Mensagens</div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Acesso rápido</div>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+              <button class="admin-btn admin-btn-sm" onclick="showAdminSection('projetos',null)">+ Projeto</button>
+              <button class="admin-btn admin-btn-sm" onclick="showAdminSection('servicos',null)">+ Serviço</button>
+              <button class="admin-btn admin-btn-sm" onclick="showAdminSection('depoimentos',null)">+
+                Depoimento</button>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Últimas mensagens recebidas</div>
+            <table class="admin-table" id="dash-msgs-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Assunto</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody id="dash-msgs-body">
+                <tr>
+                  <td colspan="3" style="color:var(--text3)">Nenhuma mensagem ainda</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PERFIL -->
+        <div class="admin-section" id="sec-perfil">
+          <div class="admin-card">
+            <div class="admin-card-title">Informações pessoais</div>
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Nome completo</label><input class="admin-input"
+                  id="p-nome" placeholder="Seu nome"></div>
+              <div class="admin-field"><label class="admin-label">Título / Cargo</label><input class="admin-input"
+                  id="p-titulo" placeholder="Ex: Desenvolvedor Full Stack"></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Eyebrow (subtítulo hero)</label><input
+                class="admin-input" id="p-eyebrow" placeholder="Ex: Desenvolvedor · Designer · Criador"></div>
+            <div class="admin-field"><label class="admin-label">Títulos animados (separar por vírgula)</label><input
+                class="admin-input" id="p-typed" placeholder="Desenvolvedor Frontend, UI Designer, ..."></div>
+            <div class="admin-field"><label class="admin-label">Biografia</label><textarea class="admin-textarea"
+                id="p-bio"></textarea></div>
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Anos de experiência</label><input class="admin-input"
+                  id="p-exp" placeholder="5+"></div>
+              <div class="admin-field"><label class="admin-label">URL do currículo (CV)</label><input
+                  class="admin-input" id="p-cv" placeholder="https://..."></div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Habilidades</div>
+            <div class="admin-field"><label class="admin-label">Adicionar skill (Enter para confirmar)</label>
+              <div class="tags-input-wrap" id="skills-tags-wrap"><input placeholder="Ex: React" id="skill-input"
+                  onkeydown="addSkillTag(event)"></div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Redes sociais</div>
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">GitHub</label><input class="admin-input" id="p-github"
+                  placeholder="https://github.com/..."></div>
+              <div class="admin-field"><label class="admin-label">LinkedIn</label><input class="admin-input"
+                  id="p-linkedin" placeholder="https://linkedin.com/in/..."></div>
+              <div class="admin-field"><label class="admin-label">Twitter</label><input class="admin-input"
+                  id="p-twitter" placeholder="https://twitter.com/..."></div>
+              <div class="admin-field"><label class="admin-label">Instagram</label><input class="admin-input"
+                  id="p-instagram" placeholder="https://instagram.com/..."></div>
+            </div>
+          </div>
+          <button class="admin-btn" onclick="savePerfil()">Salvar Perfil</button>
+        </div>
+
+        <!-- PROJETOS -->
+        <div class="admin-section" id="sec-projetos">
+          <div class="admin-card">
+            <div class="admin-card-title" id="proj-form-title">Novo Projeto</div>
+            <input type="hidden" id="edit-proj-id" value="">
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Título</label><input class="admin-input"
+                  id="pj-titulo" placeholder="Nome do projeto"></div>
+              <div class="admin-field"><label class="admin-label">Categoria</label><select class="admin-select"
+                  id="pj-cat">
+                  <option value="frontend">Frontend</option>
+                  <option value="backend">Backend</option>
+                  <option value="fullstack">Full Stack</option>
+                  <option value="mobile">Mobile</option>
+                </select></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Descrição</label><textarea class="admin-textarea"
+                id="pj-desc" placeholder="Descreva o projeto..."></textarea></div>
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">URL Demo</label><input class="admin-input"
+                  id="pj-demo" placeholder="https://..."></div>
+              <div class="admin-field"><label class="admin-label">URL Repositório</label><input class="admin-input"
+                  id="pj-repo" placeholder="https://github.com/..."></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Imagem de capa (URL)</label><input class="admin-input"
+                id="pj-img" placeholder="https://... ou deixe vazio para ícone"></div>
+            <div class="admin-field"><label class="admin-label">Tecnologias (Enter para adicionar)</label>
+              <div class="tags-input-wrap" id="pj-techs-wrap"><input placeholder="Ex: React" id="pj-tech-input"
+                  onkeydown="addProjTech(event)"></div>
+            </div>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem">
+              <button class="admin-btn" onclick="saveProject()">Salvar Projeto</button>
+              <button class="admin-btn admin-btn-outline" onclick="clearProjectForm()">Limpar</button>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Projetos cadastrados</div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Categoria</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="proj-list"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SERVIÇOS -->
+        <div class="admin-section" id="sec-servicos">
+          <div class="admin-card">
+            <div class="admin-card-title" id="serv-form-title">Novo Serviço</div>
+            <input type="hidden" id="edit-serv-id" value="">
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Título</label><input class="admin-input"
+                  id="sv-titulo" placeholder="Nome do serviço"></div>
+              <div class="admin-field"><label class="admin-label">Ícone (FontAwesome class)</label><input
+                  class="admin-input" id="sv-icon" placeholder="fa-code"></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Descrição</label><textarea class="admin-textarea"
+                id="sv-desc" placeholder="Descreva o serviço..."></textarea></div>
+            <div style="display:flex;gap:.75rem">
+              <button class="admin-btn" onclick="saveService()">Salvar</button>
+              <button class="admin-btn admin-btn-outline" onclick="clearServiceForm()">Limpar</button>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Serviços cadastrados</div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Ícone</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="serv-list"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTOS -->
+        <div class="admin-section" id="sec-depoimentos">
+          <div class="admin-card">
+            <div class="admin-card-title" id="dep-form-title">Novo Depoimento</div>
+            <input type="hidden" id="edit-dep-id" value="">
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Nome</label><input class="admin-input" id="dp-nome"
+                  placeholder="Nome do cliente"></div>
+              <div class="admin-field"><label class="admin-label">Cargo / Empresa</label><input class="admin-input"
+                  id="dp-cargo" placeholder="CEO @ Empresa"></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Depoimento</label><textarea class="admin-textarea"
+                id="dp-texto" placeholder="Texto do depoimento..."></textarea></div>
+            <div class="admin-field"><label class="admin-label">Foto (URL, opcional)</label><input class="admin-input"
+                id="dp-foto" placeholder="https://..."></div>
+            <div style="display:flex;gap:.75rem">
+              <button class="admin-btn" onclick="saveTestimonial()">Salvar</button>
+              <button class="admin-btn admin-btn-outline" onclick="clearDepForm()">Limpar</button>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">Depoimentos cadastrados</div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Cargo</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="dep-list"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CONTATO INFO -->
+        <div class="admin-section" id="sec-contato">
+          <div class="admin-card">
+            <div class="admin-card-title">Informações de contato</div>
+            <div class="admin-grid-2">
+              <div class="admin-field"><label class="admin-label">Email</label><input class="admin-input" id="ct-email"
+                  placeholder="email@exemplo.com"></div>
+              <div class="admin-field"><label class="admin-label">Telefone</label><input class="admin-input"
+                  id="ct-phone" placeholder="+55 (11) 99999-9999"></div>
+            </div>
+            <div class="admin-field"><label class="admin-label">Localização</label><input class="admin-input"
+                id="ct-local" placeholder="São Paulo, Brasil"></div>
+            <button class="admin-btn" onclick="saveContato()">Salvar</button>
+          </div>
+        </div>
+
+        <!-- MENSAGENS -->
+        <div class="admin-section" id="sec-mensagens">
+          <div class="admin-card">
+            <div class="admin-card-title">Mensagens recebidas</div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Assunto</th>
+                  <th>Mensagem</th>
+                  <th>Data</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="msgs-list"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /admin-content -->
+    </main>
+  </div><!-- /admin-panel -->
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
